@@ -9,9 +9,9 @@ class SystemComponent {
 		
 		// Database variables
 		$settings['dbhost'] = 'localhost';
-		$settings['dbusername'] = '****';
-		$settings['dbpassword'] = '****';
-		$settings['dbname'] = '****';
+		$settings['dbusername'] = $db_user;
+		$settings['dbpassword'] = $db_passl;
+		$settings['dbname'] = $db_db;
 		
 		return $settings;
 	}
