@@ -1,0 +1,21 @@
+//EASY TEMPLATE SYSTEM
+
+For code to work:
+Download all files form repositiory: github.com/qitupstudios/easyTemplate
+
+Create a file named settings.php in /lib/
+
+FILE FORMAT
+////////////
+<?
+//SET BASE URL
+$base_url = 'http://204.232.193.130/easytemplate/';
+//DB SETTINGS
+$db_user = '****';
+$db_pass = '****';   
+$db_db = '****';
+?>
+
+
+Make sure that Mod_rewrite is on so that the pretty urls will work.
+also make sure that .htaccess is allowed
