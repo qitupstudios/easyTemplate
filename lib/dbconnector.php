@@ -8,7 +8,7 @@ class SystemComponent {
 	function getSettings() {
 		
 		// Database variables
-		$settings['dbhost'] = 'localhost';
+		$settings['dbhost'] = $db_location;
 		$settings['dbusername'] = $db_user;
 		$settings['dbpassword'] = $db_pass;
 		$settings['dbname'] = $db_db;
