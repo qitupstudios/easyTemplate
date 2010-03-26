@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^([a-z]+)$ ?p=$1 [L,NC] 
+RewriteRule ^admin$ admin[L,NC]
