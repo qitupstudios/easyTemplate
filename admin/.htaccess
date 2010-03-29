@@ -1,3 +1,9 @@
 Options +FollowSymlinks
 RewriteEngine on
-RewriteRule ^([a-z]+)$ ?p=$1 [L,NC] 
+RewriteRule ^([a-z]+)/?$ ?p=$1 [L,NC] 
+RewriteRule ^([a-z]+).htm/?$ ?p=$1 [L,NC] 
+RewriteRule ^([a-z]+).html/?$ ?p=$1 [L,NC] 
+
+RewriteRule ^([a-z]+)/([0-9]$) ?p=$1&id=$2 [L,NC] 
+RewriteRule ^([a-z]+).htm/([0-9]$) ?p=$1&id=$2 [L,NC] 
+RewriteRule ^([a-z]+).html/([0-9]$) ?p=$1&id=$2 [L,NC] 
