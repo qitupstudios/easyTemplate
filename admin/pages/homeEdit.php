@@ -6,6 +6,14 @@ if(isset($_REQUEST['id'])){
 ?>
 <?
 include 'models/selects.php';
+include 'models/inserts.php';
+
+if(isset($_REQUEST['submit'])){
+	$table = 'home';
+	$setFields = "data='".$_REQUEST['data']."'";
+	$where = "id='".$_REQUEST['zone_id']."'";
+	$updateData = updateField($table, $setFields, $where, $db_location,$db_user,$db_pass,$db_db);
+}
 
 if(selectAllSingle('home',$field,$id,$db_location, $db_user,$db_pass,$db_db)){
 	$theData = selectAllSingle('home',$field,$id,$db_location, $db_user,$db_pass,$db_db);
@@ -19,13 +27,14 @@ if(selectAllSingle('home',$field,$id,$db_location, $db_user,$db_pass,$db_db)){
 }
 ?>
 <? if(isset($id)){?>
-<form action="" method="">
+<form action="" method="POST">
 	<fieldset>
     	<legend>Working on <?=$zone_title[0]?></legend>
         <input type="hidden" name="zone_id" value="<?=$id?>"/>
-        <textarea name="data" rows='20' cols='100'>
-        	<?=$data[0]?>
-        </textarea>
+        <? if(isset($updateData)){?>
+        	<h2><?=$updateData?></h2>
+        <? }?>
+        <textarea name="data" rows='20' cols='100'><?=$data[0]?></textarea>
         <br />
         <input type="submit" name="submit" value="submit"/>
     </fieldset>
