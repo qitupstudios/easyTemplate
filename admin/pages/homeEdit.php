@@ -6,7 +6,7 @@ if(isset($_REQUEST['id'])){
 ?>
 <?
 include 'models/selects.php';
-include 'models/inserts.php';
+include 'models/updates.php';
 
 if(isset($_REQUEST['submit'])){
 	$table = 'home';
