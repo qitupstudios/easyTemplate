@@ -20,8 +20,16 @@ foreach($data as $value){
     
    
     <?
+	$blog_limit = 3;
+	if(isset($_REQUEST['id'])){
+		$pageOn = (($_REQUEST['id'] - 1)* $blog_limit);
+		$limit = $pageOn.', '.$blog_limit;
+	}else{
+		$pageOn = 0;
+		$limit = $pageOn.', '.$blog_limit;
+	}
 	
-	$data = selectAllLimit('blog_form','id DESC','3',$db_location, $db_user,$db_pass,$db_db);
+	$data = selectAllLimit('blog_form','id DESC',$limit,$db_location, $db_user,$db_pass,$db_db);
 	foreach($data as $value){
 		$id[] = $value['id'];
 		$modified[] = $value['modified'];
@@ -37,25 +45,45 @@ foreach($data as $value){
      <? foreach($id as $k=>$v){?>
      		<div class="blog_post">
            		<div class="blog_title">
-                	<a href="<?=$base_url?>blogPost/<?=$v?>"><?=$title[$k]?></a>
+                	<h3><a href="<?=$base_url?>blogPost/<?=$v?>"><?=$title[$k]?></a></h3>
                 </div>
             	<div class="blog_date">
                 	<?=date('M d, Y', strtotime($modified[$k]))?>
                 </div>
                 <div class="blog_author">
-                	Written By: <?=$author[$k]?>
+                	<p>Written By: <?=$author[$k]?></p>
                 </div>
                 <div class="blog_text">
-                	<?=$blog_text[$k]?>
+                	<p><?=$blog_text[$k]?></p>
                 </div>
                 <? $splitTags = explode(', ', $tags[$k]);?>
                 <div class="blog_tags">
+                <p>
                	<? foreach($splitTags as $k=>$v){?>
 	               	<a href="<?=$base_url?>blog/<?=$v?>"><?=$v?></a>,
                 <? }?>
+                </p>
                 </div>
             </div>
             <hr />
      <? }?>
+     <div class="blog_pagination">
+    	<?
+		$connector = new DbConnector($db_location, $db_user,$db_pass,$db_db);
+     	$countquery="select id from blog_form";
+		$sqlr=$connector->query($countquery);
+		$pageCount = ceil($connector->getNumrows($sqlr)/ $blog_limit);
+		?>
+        <? if(($pageOn) != 0){?>
+        <a href="<?=$base_url?>blog/<?=$_REQUEST['id']-1?>">&lt;- PREVIOUS</a>
+        <? }?>
+		<? for($i=1;$i<($pageCount+1);$i++){?>
+        	<a href="<?=$base_url?>blog/<?=$i?>"><?=$i?></a>
+		<? }?>
+        <? if(($pageOn/$blog_limit) < ($pageCount-1)){?>
+	        <a href="<?=$base_url?>blog/<?=$_REQUEST['id']+1?>">NEXT -&gt;</a>
+		<? }?>
+        
+     </div>
     
 </div>

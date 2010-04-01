@@ -3,6 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
+<link rel="stylesheet" href="<?=$base_url?>css/style.css" type="text/css" media="screen"/>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load("swfobject", "2.2");
+  google.load("jquery", "1.4.1")
+</script>
+<script type="text/javascript" src="<?=$base_url?>js/global.js"></script>
 </head>
 <div id="main_container">
 	<div id="main_header">
