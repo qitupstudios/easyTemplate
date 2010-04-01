@@ -77,13 +77,43 @@ foreach($data as $value){
         <? if(($pageOn) != 0){?>
         <a href="<?=$base_url?>blog/<?=$_REQUEST['id']-1?>">&lt;- PREVIOUS</a>
         <? }?>
-		<? for($i=1;$i<($pageCount+1);$i++){?>
-        	<a href="<?=$base_url?>blog/<?=$i?>"><?=$i?></a>
-		<? }?>
+        
+        <? if($_REQUEST['id'] <= 3){
+			for($i=1;$i<=5;$i++){?>
+            <? if($i == $_REQUEST['id']){?>
+            	<?=$i?>
+            <? }else{?>
+	        	<a href="<?=$base_url?>blog/<?=$i?>"><?=$i?></a>
+            <? }?>
+		<? 	}
+		   }
+		?>
+          <? if(($_REQUEST['id'] > 3) && ($_REQUEST['id'] < ($pageCount -2))){
+		  	echo '...';
+			for($i=($_REQUEST['id']-2);$i<=($_REQUEST['id']+2);$i++){?>
+				<? if($i == $_REQUEST['id']){?>
+                    <?=$i?>
+                <? }else{?>
+                    <a href="<?=$base_url?>blog/<?=$i?>"><?=$i?></a>
+                <? }?>
+		<? 	}
+			echo '...';
+		   }
+		?>
+        
+        <? if($_REQUEST['id'] >= ($pageCount - 2)){
+			for($i=($pageCount-5);$i<=($pageCount);$i++){?>
+				<? if($i == $_REQUEST['id']){?>
+                    <?=$i?>
+                <? }else{?>
+                    <a href="<?=$base_url?>blog/<?=$i?>"><?=$i?></a>
+                <? }?>
+		<? 	}
+		   }
+		?>
         <? if(($pageOn/$blog_limit) < ($pageCount-1)){?>
 	        <a href="<?=$base_url?>blog/<?=$_REQUEST['id']+1?>">NEXT -&gt;</a>
 		<? }?>
-        
      </div>
     
 </div>

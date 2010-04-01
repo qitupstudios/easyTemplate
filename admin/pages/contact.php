@@ -21,6 +21,9 @@ if(selectAll($page,$db_location, $db_user,$db_pass,$db_db)){
 		    <a href="<?=$base_url?>contactEdit/<?=$v?>"><?=$zone_title[$k]?></a>
         </li>
         <? endforeach?>
+        <li>
+        	<a href="<?=$base_url?>contactList">See Contacts</a>
+        </li>
     </ul>
     <br />
     <hr/>
