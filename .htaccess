@@ -1,4 +1,14 @@
 Options +FollowSymlinks
 RewriteEngine on
-RewriteRule ^([a-z]+)$ ?p=$1 [L,NC] 
+RewriteRule ^([a-z]+)/?$ ?p=$1 [L,NC] 
+RewriteRule ^([a-z]+).htm/?$ ?p=$1 [L,NC] 
+RewriteRule ^([a-z]+).html/?$ ?p=$1 [L,NC] 
 RewriteRule ^admin$ admin[L,NC]
+
+RewriteRule ^([a-z]+)/([a-z0-9]+$) ?p=$1&id=$2 [L,NC] 
+RewriteRule ^([a-z]+).htm/([a-z0-9]+$) ?p=$1&id=$2 [L,NC] 
+RewriteRule ^([a-z]+).html/([a-z0-9]+$) ?p=$1&id=$2 [L,NC] 
+
+RewriteRule ^([a-z]+)/([a-z0-9]+)/([a-z0-9]+$) ?p=$1&id=$2&id2=$3 [L,NC] 
+RewriteRule ^([a-z]+).htm/([a-z0-9]+)/([a-z0-9]+$) ?p=$1&id=$2&id2=$3 [L,NC] 
+RewriteRule ^([a-z]+).html/([a-z0-9]+)/([a-z0-9]+$) ?p=$1&id=$2&id2=$3 [L,NC] 

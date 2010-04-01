@@ -9,9 +9,19 @@ function selectAll($page,$db_location, $db_user,$db_pass,$db_db){
 	return $data;
 }
 
+function selectAllLimit($page,$order,$limit,$db_location, $db_user,$db_pass,$db_db){
+	$connector = new DbConnector($db_location, $db_user,$db_pass,$db_db);
+	$query = 'SELECT * FROM '.$page.' ORDER BY '.$order.' LIMIT '.$limit;
+	$sqlrs=$connector->query($query) or die(mysql_error());
+	while ($row=$connector->fetchArray($sqlrs)) { 
+		$data[] = $row;
+	};
+	return $data;
+}
+
 function selectAllSingle($thepage,$field,$id,$db_location, $db_user,$db_pass,$db_db){
 	$connector = new DbConnector($db_location, $db_user,$db_pass,$db_db);
-	$query = 'SELECT * FROM '.$thepage.' WHERE id='.$id;
+	$query = 'SELECT * FROM '.$thepage.' WHERE '.$field.'='.$id;
 	$sqlrs=$connector->query($query);
 	while ($row=$connector->fetchArray($sqlrs)) { 
 		$data[] = $row;
