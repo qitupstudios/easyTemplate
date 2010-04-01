@@ -27,6 +27,7 @@ if(selectAllSingle('home',$field,$id,$db_location, $db_user,$db_pass,$db_db)){
 }
 ?>
 <? if(isset($id)){?>
+<a href="<?=$base_url?>home">&lt; Back</a>
 <form action="" method="POST">
 	<fieldset>
     	<legend>Working on <?=$zone_title[0]?></legend>

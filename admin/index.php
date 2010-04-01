@@ -1,5 +1,4 @@
 <? include('lib/settings.php');?>
-<? include('lib/settings.php');?>
 <? include('lib/dbconnector.php');?>
 <? 
 if(isset($_REQUEST['p'])){

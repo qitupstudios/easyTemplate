@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 class SystemComponent {
 	var $settings;
-	function getSettings() {
+	function getSettings($db_location, $db_user,$db_pass,$db_db) {
 		
 		// Database variables
 		$settings['dbhost'] = $db_location;
@@ -22,9 +22,9 @@ class DbConnector extends SystemComponent {
 var $theQuery;
 var $link;
 
-function DbConnector(){
+function DbConnector($db_location, $db_user,$db_pass,$db_db){
 	// Load settings from parent class
-	$settings = SystemComponent::getSettings();
+	$settings = SystemComponent::getSettings($db_location, $db_user,$db_pass,$db_db);
 
 	// Get the main settings from the array we just loaded
 	$host = $settings['dbhost'];

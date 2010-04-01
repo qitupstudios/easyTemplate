@@ -7,8 +7,6 @@ if(isset($_REQUEST['p'])){
 	$page = 'home';
 }
 ?>
-<?=$db_user?>
-
 <? include('includes/header.php');?>
 <? include('pages/'.$page.'.php');?>
 <? include('includes/footer.php');?>
