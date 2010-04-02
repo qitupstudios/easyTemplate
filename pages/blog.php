@@ -58,7 +58,7 @@ foreach($data as $value){
                 </div>
                 <? $splitTags = explode(', ', $tags[$k]);?>
                 <div class="blog_tags">
-                <p>
+                <p><strong>Tags: </strong>
                	<? foreach($splitTags as $k=>$v){?>
 	               	<a href="<?=$base_url?>blog/<?=$v?>"><?=$v?></a>,
                 <? }?>
@@ -112,7 +112,7 @@ foreach($data as $value){
 		   }
 		?>
         <? if(($pageOn/$blog_limit) < ($pageCount-1)){?>
-	        <a href="<?=$base_url?>blog/<?=$_REQUEST['id']+1?>">NEXT -&gt;</a>
+	        <a href="<?=$base_url?>blog/<? if($_REQUEST['id'] == 0){echo '2';}else{echo $_REQUEST['id']+1;}?>">NEXT -&gt;</a>
 		<? }?>
      </div>
     
